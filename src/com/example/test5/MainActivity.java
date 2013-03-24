@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
                          if (!text.isEmpty()) {
                              adapter.add(new TaskModel(0L, text));
                              // TODO create a task
-                             ((EditText) v).setText("");
+                             ((EditText) v).setText(""); // AATAT
                              return true;
                          }
                     }
