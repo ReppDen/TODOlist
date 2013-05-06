@@ -1,12 +1,14 @@
 package com.example.test5;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.example.test5.models.TaskModel;
+import com.example.test5.view_task.ViewTaskActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +31,14 @@ public class MainActivity extends Activity {
         taskList.setAdapter(adapter);
         add = (Button) findViewById(R.id.addbutton);
 
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
         initListeners();
+
+
 
     }
 
@@ -40,21 +49,26 @@ public class MainActivity extends Activity {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     if (keyCode == KeyEvent.KEYCODE_ENTER) {
                         String text = ((EditText) v).getText().toString();
-                         if (!text.isEmpty()) {
-                             adapter.add(new TaskModel(0L, text));
-                             // TODO create a task
-                             ((EditText) v).setText(""); // AATAT
-                             return true;
+                        System.out.println(text.isEmpty());
+                        if (!text.trim().isEmpty()) {
+                             //create a simple task
+                            TaskModel task = new TaskModel(0L, text);
+
+                            // add a task into list
+                            adapter.insert(task, 0);
+                             ((EditText) v).setText("");
                          }
                     }
                 }
-                return false;
+                return true;
             }
         });
         taskList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//              // TODO запусть просмота задачи
+                Intent intent = new Intent(MainActivity.this, ViewTaskActivity.class);
+                intent.putExtra(getString(R.string.task_identificator), adapter.getItem(position));
+                MainActivity.this.startActivity(intent);
             }
         });
     }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="164dp"
+            android:id="@+id/taskDescription" android:layout_gravity="left|center_vertical" android:inputType="text|textMultiLine"
+            android:gravity="top"/>
+    <CheckBox
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Синхронизировать задачу"
+            android:id="@+id/checkBox" android:layout_gravity="left|center_vertical"
+            />
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Аудио"
+            android:id="@+id/textView" android:layout_gravity="left|center_vertical"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Фото"
+            android:id="@+id/textView1" android:layout_gravity="left|center_vertical"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="42dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Меток на карте:"
+                android:id="@+id/textView2" android:layout_gravity="left|center_vertical" android:gravity="center|top"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="0"
+                android:id="@+id/textView3" android:gravity="center"/>
+        <Space
+                android:layout_width="143dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/space" android:layout_weight="0.22"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Карта"
+                android:id="@+id/button"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:gravity="center|bottom">
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button1" android:layout_gravity="center_vertical|left"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button2" android:layout_gravity="center"/>
+    </LinearLayout>
+
+</LinearLayout>
