@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ViewTaskActivity.class);
-                intent.putExtra(getString(R.string.task_identificator), "OMG!!!! it works!!!");
+                intent.putExtra(getString(R.string.task_identificator), new TaskModel(1L, "OMG IT WORKS!!!!"));
                 startActivity(intent);
             }
         });
