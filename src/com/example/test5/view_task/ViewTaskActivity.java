@@ -20,7 +20,7 @@ public class ViewTaskActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_task);
-        inModel = (TaskModel) getIntent().getSerializableExtra(getString(R.string.task_identificator));
+        inModel = (TaskModel) getIntent().getSerializableExtra(getString(R.string.viewTask_TaskModel));
 
         taskDescription = (EditText) findViewById(R.id.taskDescription);
         taskDescription.setText(inModel.getName());

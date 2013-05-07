@@ -19,23 +19,23 @@
                 <EditText
                         android:layout_width="156dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/editText" android:layout_weight="0.36" android:clickable="false"
+                        android:id="@+id/main.taskText" android:layout_weight="0.36"
                         android:singleLine="true" android:hint="Введите текст задачи/группы"/>
                 <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="   +   "
-                        android:id="@+id/button" android:singleLine="false"/>
+                        android:id="@+id/main.quickAddButton" />
                 <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="+ Группа"
-                        android:id="@+id/button3" android:singleLine="false"/>
+                        android:id="@+id/main.addGroup"/>
             </LinearLayout>
             <ListView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tasklist" android:clickable="false" android:fastScrollEnabled="false"
+                    android:id="@+id/main.tasklist" android:clickable="false" android:fastScrollEnabled="false"
                     />
         </LinearLayout>
         <LinearLayout
@@ -46,22 +46,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="  +   "
-                    android:id="@+id/addbutton" android:singleLine="false"/>
+                    android:id="@+id/main.addbutton" android:singleLine="false"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="map"
-                    android:id="@+id/button1" android:singleLine="false"/>
+                    android:id="@+id/main.mapBtn" android:singleLine="false"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="sort"
-                    android:id="@+id/button2" android:singleLine="false"/>
+                    android:id="@+id/main.sortButton" android:singleLine="false"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="auth"
-                    android:id="@+id/auth_button"/>
+                    android:id="@+id/main.auth_button"/>
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>

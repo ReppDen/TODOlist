@@ -29,7 +29,7 @@
                         <TextView android:layout_width="157dp" android:layout_height="wrap_content" android:text="Дата"
                                   android:id="@+id/textView9" android:textSize="20dp" android:layout_gravity="center"/>
                         <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
-                                  android:text="06.05.2013" android:id="@+id/editText" android:layout_margin="3px"/>
+                                  android:text="06.05.2013" android:id="@+id/main.taskText" android:layout_margin="3px"/>
                     </LinearLayout>
                 </LinearLayout>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                         <Button android:layout_width="match_parent" android:layout_height="wrap_content"
                                 android:text="Создать" android:id="@+id/button4"/>
                         <Button android:layout_width="match_parent" android:layout_height="wrap_content"
-                                android:text="Выбрать" android:id="@+id/button3"/>
+                                android:text="Выбрать" android:id="@+id/main.addGroup"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
                                   android:layout_height="fill_parent">
@@ -102,7 +102,7 @@
                         <Space android:layout_width="143dp" android:layout_height="fill_parent" android:id="@+id/space"
                                android:layout_weight="0.22"/>
                         <Button android:layout_width="wrap_content" android:layout_height="match_parent"
-                                android:text="Карта" android:id="@+id/button"/>
+                                android:text="Карта" android:id="@+id/main.quickAddButton"/>
                     </LinearLayout>
                 </LinearLayout>
                 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
