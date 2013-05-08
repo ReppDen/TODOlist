@@ -1,11 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android">
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-          android:padding="10dp"
-          android:textColor="#00FF00"
-          android:textSize="20sp"
-          android:textStyle="bold" >
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_toLeftOf="@+id/ratingBar">
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentLeft="true" android:layout_toLeftOf="@+id/ratingBar"
+                  android:layout_gravity="left" android:text="Текст задачи. Куча текста"
+                  android:inputType="textMultiLine" android:minLines="3">
 
-</TextView>
+        </TextView>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Дата: "
+                    android:id="@+id/textView"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="08.05.2013"
+                    android:id="@+id/textView1"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Статус: "
+                    android:id="@+id/textView2"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="не завершена!"
+                    android:id="@+id/textView3"/>
+        </LinearLayout>
+    </LinearLayout>
+    <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar" android:numStars="2" android:layout_gravity="center|right"
+            android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+</RelativeLayout>

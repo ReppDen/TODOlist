@@ -21,9 +21,23 @@
                               android:id="@+id/taskDescription" android:layout_gravity="left|center_vertical"
                               android:inputType="text|textMultiLine" android:gravity="top"
                               android:text="Описание задачи. Куча текста"/>
-                    <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content"
-                              android:text="Синхронизировать" android:id="@+id/checkBox" android:singleLine="false"
-                              android:layout_gravity="center_vertical|left"/>
+                    <RelativeLayout
+                            android:orientation="horizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
+                        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                  android:text="Синхронизировать" android:id="@+id/checkBox" android:singleLine="false"
+                                  android:layout_gravity="center_vertical|left" android:layout_alignParentLeft="true"
+                                  android:layout_marginLeft="0dp" android:layout_alignParentTop="false"
+                                  android:layout_marginTop="3dp" android:layout_centerVertical="true"/>
+                        <RatingBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/ratingBar" android:numStars="2" android:layout_alignParentLeft="false"
+                                android:layout_marginLeft="138dp" android:layout_alignParentTop="false"
+                                android:layout_marginTop="0dp" android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true"/>
+                    </RelativeLayout>
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
                                   android:layout_height="fill_parent">
                         <TextView android:layout_width="157dp" android:layout_height="wrap_content" android:text="Дата"
@@ -81,6 +95,8 @@
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:text="Гео локация" android:id="@+id/textView10"/>
                 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
                               android:layout_height="wrap_content">
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"

@@ -20,7 +20,8 @@
                         android:layout_width="156dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/main.taskText" android:layout_weight="0.36"
-                        android:singleLine="true" android:hint="Введите текст задачи/группы"/>
+                        android:singleLine="true" android:hint="Введите текст задачи" android:textSize="15dp"
+                        android:textIsSelectable="false"/>
                 <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

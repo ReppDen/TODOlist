@@ -49,12 +49,12 @@ public class MainActivity extends Activity {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     if (keyCode == KeyEvent.KEYCODE_ENTER) {
                         String text = ((EditText) v).getText().toString();
-                        System.out.println(text.isEmpty());
                         if (!text.trim().isEmpty()) {
                             //create a simple task
+                            // TODO (Drepp) запихать куда нибудь свежесозданную таску
                             TaskModel task = new TaskModel(0L, text);
 
-                            // quickAdd a task into list
+                            // add a task into list
                             adapter.insert(task, 0);
                             ((EditText) v).setText("");
                         }

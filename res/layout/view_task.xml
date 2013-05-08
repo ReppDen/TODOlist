@@ -33,12 +33,22 @@
                         android:text="задача выполнена"
                         android:id="@+id/checkBox1" android:singleLine="false"
                         />
-                <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Синхронизировать"
-                        android:id="@+id/checkBox"
-                        android:singleLine="false" android:layout_gravity="center_vertical|left"/>
+                <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Синхронизировать"
+                            android:id="@+id/checkBox"
+                            android:singleLine="false" android:layout_gravity="center_vertical|left"
+                            android:layout_alignParentLeft="true" android:layout_centerVertical="true"/>
+                    <RatingBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/ratingBar" android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true" android:numStars="2"/>
+                </RelativeLayout>
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="fill_parent"
@@ -135,6 +145,11 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Гео локация"
+                    android:id="@+id/textView10"/>
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
