@@ -48,9 +48,11 @@
             <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="map"
-                    android:id="@+id/main.mapBtn" android:singleLine="false"
-                    android:src="@android:drawable/ic_dialog_map"/>
+                    android:id="@+id/main.addGroupBtn" android:src="@drawable/av_add_to_queue"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/main.mapBtn" android:src="@drawable/location_web_site"/>
             <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -58,6 +60,10 @@
                     android:id="@+id/main.sortButton" android:singleLine="false"
                     android:src="@android:drawable/ic_menu_sort_by_size" android:adjustViewBounds="false"
                     android:baselineAlignBottom="false"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/main.authBtn" android:src="@drawable/navigation_refresh"/>
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>

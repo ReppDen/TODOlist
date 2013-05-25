@@ -13,10 +13,24 @@ import com.example.test5.create_task.CreateTaskActivity;
 
 public class MainActivity extends Activity {
 
-    ImageButton addBtn, mapBtn, quickAddButton;
+    ImageButton addBtn, mapBtn, quickAddButton, addGroupBtn, authBtn;
     ListView taskList;
     EditText taskText;
     ArrayAdapter<TaskModel> adapter;
+    private View.OnClickListener nextTimeBabyListener;
+
+    {
+        nextTimeBabyListener = new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Будет реализовано в следующей версии").setNeutralButton("Ok", null);
+                builder.create();
+                builder.show();
+            }
+        };
+    }
 
 
     @Override
@@ -28,6 +42,9 @@ public class MainActivity extends Activity {
         addBtn = (ImageButton) findViewById(R.id.main_addbutton);
         mapBtn = (ImageButton) findViewById(R.id.main_mapBtn);
         quickAddButton = (ImageButton) findViewById(R.id.main_quickAddButton);
+        addGroupBtn = (ImageButton) findViewById(R.id.main_addGroupBtn);
+        authBtn = (ImageButton) findViewById(R.id.main_authBtn);
+
 
         // неведомая фигня инициализирующая список
         adapter = new ArrayAdapter<TaskModel>(this.getBaseContext(), R.layout.list_view,R.id.list_view_taskText);
@@ -36,6 +53,8 @@ public class MainActivity extends Activity {
     }
 
     private void initListeners() {
+        authBtn.setOnClickListener(nextTimeBabyListener);
+        addGroupBtn.setOnClickListener(nextTimeBabyListener);
         quickAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
