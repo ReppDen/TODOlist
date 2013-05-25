@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
         mapBtn = (Button) findViewById(R.id.main_mapBtn);
 
         // неведомая фигня инициализирующая список
-        adapter = new ArrayAdapter<TaskModel>(this.getBaseContext(), R.layout.list_view);
+        adapter = new ArrayAdapter<TaskModel>(this.getBaseContext(), R.layout.list_view,R.id.list_view_taskText);
         taskList.setAdapter(adapter);
         initListeners();
     }
