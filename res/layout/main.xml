@@ -17,17 +17,16 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
                 <EditText
-                        android:layout_width="189dp"
+                        android:layout_width="156dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/main.taskText"
-                        android:singleLine="true" android:hint="Введите текст задачи" android:textSize="23dp"
-                        android:textIsSelectable="true" android:layout_weight="0.52"/>
+                        android:id="@+id/main.taskText" android:layout_weight="0.36"
+                        android:singleLine="true" android:hint="Введите текст задачи" android:textSize="24dp"
+                        android:textIsSelectable="false"/>
                 <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="   +   "
-                        android:id="@+id/main.quickAddButton" android:src="@android:drawable/ic_input_add"
-                        android:scaleType="fitXY"/>
+                        android:id="@+id/main.quickAddButton" android:src="@android:drawable/ic_input_add"/>
             </LinearLayout>
             <ListView
                     android:layout_width="match_parent"
