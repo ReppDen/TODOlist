@@ -17,21 +17,17 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
                 <EditText
-                        android:layout_width="156dp"
+                        android:layout_width="189dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/main.taskText" android:layout_weight="0.36"
-                        android:singleLine="true" android:hint="Введите текст задачи" android:textSize="15dp"
-                        android:textIsSelectable="false"/>
-                <Button
+                        android:id="@+id/main.taskText"
+                        android:singleLine="true" android:hint="Введите текст задачи" android:textSize="23dp"
+                        android:textIsSelectable="true" android:layout_weight="0.52"/>
+                <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="   +   "
-                        android:id="@+id/main.quickAddButton" />
-                <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+ Группа"
-                        android:id="@+id/main.addGroup"/>
+                        android:id="@+id/main.quickAddButton" android:src="@android:drawable/ic_input_add"
+                        android:scaleType="fitXY"/>
             </LinearLayout>
             <ListView
                     android:layout_width="match_parent"
@@ -43,26 +39,25 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" android:gravity="center|bottom" android:id="@+id/buttonsPanel"
                 android:orientation="horizontal" android:layout_gravity="bottom">
-            <Button
+            <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="  +   "
-                    android:id="@+id/main.addbutton" android:singleLine="false"/>
-            <Button
+                    android:id="@+id/main.addbutton" android:singleLine="false"
+                    android:src="@android:drawable/ic_input_add" android:adjustViewBounds="false"/>
+            <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="map"
-                    android:id="@+id/main.mapBtn" android:singleLine="false"/>
-            <Button
+                    android:id="@+id/main.mapBtn" android:singleLine="false"
+                    android:src="@android:drawable/ic_dialog_map"/>
+            <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="sort"
-                    android:id="@+id/main.sortButton" android:singleLine="false"/>
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="auth"
-                    android:id="@+id/main.auth_button"/>
+                    android:id="@+id/main.sortButton" android:singleLine="false"
+                    android:src="@android:drawable/ic_menu_sort_by_size" android:adjustViewBounds="false"
+                    android:baselineAlignBottom="false"/>
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>

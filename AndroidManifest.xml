@@ -14,8 +14,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".view_task.ViewTaskActivity"/>
-        <activity android:name=".create_task.CreateTaskActivity"/>
+        <activity android:name=".view_task.ViewTaskActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".create_task.CreateTaskActivity"
+                  android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
