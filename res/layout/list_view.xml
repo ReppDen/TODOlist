@@ -6,32 +6,41 @@
         android:paddingTop="5dp">
 
     <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_toLeftOf="@+id/ratingBar">
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_alignParentLeft="true" android:layout_toLeftOf="@+id/ratingBar"
-                  android:layout_gravity="left" android:text="Текст задачи. Куча текста"
-                  android:inputType="textMultiLine" android:id="@+id/list_view.taskText"
-                  android:textSize="25dp" android:maxLines="3" android:minLines="1">
-
-        </TextView>
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/main.isCompletedCb" android:layout_gravity="center"/>
         <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Дата: "
-                    android:id="@+id/textView"/>
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="08.05.2013"
-                    android:id="@+id/list_view.taskDate"/>
+                android:layout_height="wrap_content">
+            <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentLeft="true" android:layout_toLeftOf="@+id/ratingBar"
+                      android:layout_gravity="left" android:text="Текст задачи. Куча текста"
+                      android:inputType="textMultiLine" android:id="@+id/list_view.taskText"
+                      android:textSize="25dp" android:maxLines="3" android:minLines="1">
+
+            </TextView>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Дата: "
+                        android:id="@+id/textView"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="08.05.2013"
+                        android:id="@+id/list_view.taskDate"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <RatingBar
