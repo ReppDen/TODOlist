@@ -1,8 +1,7 @@
-package com.example.test5.map;
+package com.example.test5.forms.map;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.EditText;
 import com.example.test5.R;
 
 /**

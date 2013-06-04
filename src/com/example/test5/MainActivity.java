@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
+import com.example.test5.forms.map.MapActivity;
 import com.example.test5.models.TaskModel;
-import com.example.test5.create_task.CreateTaskActivity;
+import com.example.test5.forms.create_task.CreateTaskActivity;
+import com.example.test5.forms.view_task.ViewTaskActivity;
 
 public class MainActivity extends Activity {
 
@@ -48,6 +50,7 @@ public class MainActivity extends Activity {
 
         // неведомая фигня инициализирующая список
         adapter = new ArrayAdapter<TaskModel>(this.getBaseContext(), R.layout.list_view,R.id.list_view_taskText);
+        taskList.setFocusable(true);
         taskList.setAdapter(adapter);
         initListeners();
     }
@@ -82,21 +85,22 @@ public class MainActivity extends Activity {
                 return true;
             }
         });
-        taskList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        taskList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(MainActivity.this, ViewTaskActivity.class);
-//                intent.putExtra(getString(R.string.viewTask_TaskModel), adapter.getItem(position));
-//                MainActivity.this.startActivity(intent);
-                reliseOmNomNom();
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, ViewTaskActivity.class);
+                intent.putExtra(getString(R.string.viewTask_TaskModel), adapter.getItem(position));
+                MainActivity.this.startActivity(intent);
+                return true;
             }
         });
 
         mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO вызвать карту
-                reliseOmNomNom();
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
+                MainActivity.this.startActivity(intent);
             }
         });
     }

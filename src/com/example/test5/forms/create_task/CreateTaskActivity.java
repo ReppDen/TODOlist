@@ -1,10 +1,9 @@
-package com.example.test5.create_task;
+package com.example.test5.forms.create_task;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.EditText;
 import com.example.test5.R;
-import com.example.test5.models.TaskModel;
 
 /**
  * Здесь будет ваша реклама

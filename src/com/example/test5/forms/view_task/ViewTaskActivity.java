@@ -1,4 +1,4 @@
-package com.example.test5.view_task;
+package com.example.test5.forms.view_task;
 
 import android.app.Activity;
 import android.content.Intent;
