@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
+import com.example.test5.crutches.MainAdapter;
 import com.example.test5.forms.map.MapActivity;
 import com.example.test5.models.TaskModel;
 import com.example.test5.forms.create_task.CreateTaskActivity;
 import com.example.test5.forms.view_task.ViewTaskActivity;
+
+import java.util.Random;
 
 public class MainActivity extends Activity {
 
@@ -49,7 +52,8 @@ public class MainActivity extends Activity {
 
 
         // неведомая фигня инициализирующая список
-        adapter = new ArrayAdapter<TaskModel>(this.getBaseContext(), R.layout.list_view,R.id.list_view_taskText);
+//        adapter = new ArrayAdapter<TaskModel>(this.getBaseContext(), R.layout.list_view,R.id.list_view_taskText);
+        adapter = new MainAdapter<TaskModel>(this.getBaseContext(), R.layout.list_view);
         taskList.setFocusable(true);
         taskList.setAdapter(adapter);
         initListeners();
@@ -86,6 +90,12 @@ public class MainActivity extends Activity {
             }
         });
 
+        taskList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                reliseOmNomNom();
+            }
+        });
         taskList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -109,7 +119,7 @@ public class MainActivity extends Activity {
         if (!text.trim().isEmpty()) {
             //create a simple task
             // TODO (Drepp) запихать куда нибудь свежесозданную таску
-            TaskModel task = new TaskModel(0L, text);
+            TaskModel task = new TaskModel(new Random().nextLong(), text);
 
             // add a task into list
             adapter.insert(task, 0);

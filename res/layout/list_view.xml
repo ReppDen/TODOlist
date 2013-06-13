@@ -3,49 +3,52 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:paddingTop="5dp">
+        android:paddingTop="5dp" android:focusable="false"
+        android:descendantFocusability="blocksDescendants">
 
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_toLeftOf="@+id/ratingBar">
+            android:layout_height="wrap_content" android:layout_toLeftOf="@+id/list_view.ratingBar" android:focusable="false">
         <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/main.isCompletedCb" android:layout_gravity="center"/>
+                android:id="@+id/list_view.isCompletedCb" android:layout_gravity="center" android:focusable="true"
+                android:clickable="true"/>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" android:focusable="false">
             <TextView xmlns:android="http://schemas.android.com/apk/res/android"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_alignParentLeft="true" android:layout_toLeftOf="@+id/ratingBar"
+                      android:layout_alignParentLeft="true" android:layout_toLeftOf="@+id/list_view.ratingBar"
                       android:layout_gravity="left" android:text="Текст задачи. Куча текста"
                       android:inputType="textMultiLine" android:id="@+id/list_view.taskText"
-                      android:textSize="25dp" android:maxLines="3" android:minLines="1">
+                      android:textSize="25dp" android:maxLines="3" android:minLines="1" android:focusable="false">
 
             </TextView>
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                    android:layout_height="fill_parent" android:focusable="false">
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Дата: "
-                        android:id="@+id/textView"/>
+                        android:id="@+id/textView" android:focusable="false"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="08.05.2013"
-                        android:id="@+id/list_view.taskDate"/>
+                        android:id="@+id/list_view.taskDate" android:focusable="false" android:clickable="false"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ratingBar" android:numStars="2" android:layout_gravity="center|right"
-            android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+            android:id="@+id/list_view.ratingBar" android:numStars="2" android:layout_gravity="center|right"
+            android:layout_alignParentRight="true" android:layout_centerVertical="true" android:focusable="true"
+            android:clickable="true" android:rating="0" android:stepSize="1"/>
 </RelativeLayout>

@@ -23,6 +23,7 @@ public class ViewTaskActivity extends Activity {
         inModel = (TaskModel) getIntent().getSerializableExtra(getString(R.string.viewTask_TaskModel));
 
         taskDescription = (EditText) findViewById(R.id.taskDescription);
-        taskDescription.setText(inModel.getName());
+        taskDescription = (EditText) findViewById(R.id.taskDescription);
+        taskDescription.setText(inModel.getText());
     }
 }

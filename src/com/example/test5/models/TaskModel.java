@@ -1,6 +1,7 @@
 package com.example.test5.models;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * модель задачи, хранимая в списка задач
@@ -8,17 +9,34 @@ import java.io.Serializable;
  * @author Drepp
  * @since: 24.03.13
  */
-public class TaskModel implements Serializable{
+public class TaskModel implements Serializable {
 
     Long id;
-    String name;
+    String text;
+    Date date;
+    Integer raiting;
+    Boolean completed;
 
-    public TaskModel() {
+    public TaskModel(Long id, String text) {
+        this.id = id;
+        this.text = text;
+        this.date = new Date();
+        this.raiting = 0;
+        this.completed = false;
     }
 
-    public TaskModel(Long id, String name) {
+    public TaskModel(Long id, String text, Integer raiting) {
         this.id = id;
-        this.name = name;
+        this.text = text;
+        this.raiting = raiting;
+    }
+
+    public TaskModel(Long id, String text, Date date, Integer raiting) {
+        this.id = id;
+        this.text = text;
+        this.date = date;
+        this.raiting = raiting;
+        this.completed = false;
     }
 
     public Long getId() {
@@ -30,16 +48,48 @@ public class TaskModel implements Serializable{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getText() {
+        return text;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Integer getRaiting() {
+        return raiting;
+    }
+
+    public void setRaiting(Integer raiting) {
+        this.raiting = raiting;
+    }
+
+    public Boolean getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
     }
 
     @Override
     public String toString() {
-        return this.getName();
+        return "TaskModel{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                ", raiting=" + raiting +
+                ", completed=" + completed +
+                '}';
     }
+
+
 }
