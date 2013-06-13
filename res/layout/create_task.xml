@@ -15,10 +15,10 @@
                 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
                               android:layout_height="wrap_content">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                              android:text="Создание задачи" android:id="@+id/textView8" android:textSize="25dp"
+                              android:text="Создание задачи" android:id="@+id/create_task.title" android:textSize="25dp"
                               android:singleLine="true"/>
                     <EditText android:layout_width="fill_parent" android:layout_height="71dp"
-                              android:id="@+id/taskDescription" android:layout_gravity="left|center_vertical"
+                              android:id="@+id/create_task.taskDescription" android:layout_gravity="left|center_vertical"
                               android:inputType="text|textMultiLine" android:gravity="top"
                               android:text="Описание задачи. Куча текста"/>
                     <RelativeLayout
@@ -101,11 +101,11 @@
                                 android:id="@+id/relativeLayout" android:minHeight="30dp"
                                 android:longClickable="false">
                     <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Сохранить" android:id="@+id/button7" android:layout_gravity="center"
+                            android:text="Сохранить" android:id="@+id/create_task.save" android:layout_gravity="center"
                             android:layout_alignParentLeft="false" android:layout_alignParentRight="true"
                             android:layout_margin="3px"/>
                     <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Отмена" android:id="@+id/button8" android:layout_gravity="center|left"
+                            android:text="Отмена" android:id="@+id/create_task.close" android:layout_gravity="center|left"
                             android:layout_alignParentRight="false" android:layout_alignParentLeft="true"
                             android:layout_margin="3px"/>
                 </RelativeLayout>
