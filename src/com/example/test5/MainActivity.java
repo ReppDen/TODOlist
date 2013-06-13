@@ -115,6 +115,8 @@ public class MainActivity extends Activity {
         });
     }
 
+
+
     private void addItemToTaskList(String text) {
         if (!text.trim().isEmpty()) {
             //create a simple task
@@ -145,4 +147,5 @@ public class MainActivity extends Activity {
         builder.show();
 
     }
+
 }
