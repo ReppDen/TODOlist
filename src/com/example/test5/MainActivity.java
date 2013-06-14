@@ -119,6 +119,7 @@ public class MainActivity extends Activity {
                     m.setRaiting(Integer.valueOf(node.getChildText("raiting")));
                     m.setPhoto(node.getChildText("photo"));
                     m.setAudio(node.getChildText("audio"));
+                    m.setAdress(node.getChildText("address"));
                     try {
                         m.setDate(sdf.parse(node.getChildText("date")));
                     } catch (ParseException e) {
@@ -248,6 +249,8 @@ public class MainActivity extends Activity {
             el.addContent(new Element("completed").setText(String.valueOf(t.getCompleted())));
             el.addContent(new Element("audio").setText(String.valueOf(t.getAudio())));
             el.addContent(new Element("photo").setText(String.valueOf(t.getPhoto())));
+            el.addContent(new Element("address").setText(String.valueOf(t.getPhoto())));
+
             tasksEl.addContent(el);
         }
 

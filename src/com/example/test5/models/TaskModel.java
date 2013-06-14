@@ -1,7 +1,9 @@
 package com.example.test5.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -19,6 +21,7 @@ public class TaskModel implements Serializable {
     Boolean completed = false;
     String audio = "";
     String photo = "";
+    String adress = "";
 
     private static Random random = new Random();
 
@@ -109,16 +112,25 @@ public class TaskModel implements Serializable {
         this.photo = photo;
     }
 
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
     @Override
     public String toString() {
         return "TaskModel{" +
-                "id=" + id +
-                ", text='" + text + '\'' +
-                ", date=" + date +
-                ", raiting=" + raiting +
-                ", completed=" + completed +
-                ", audio='" + audio + '\'' +
+                "adress='" + adress + '\'' +
                 ", photo='" + photo + '\'' +
+                ", audio='" + audio + '\'' +
+                ", completed=" + completed +
+                ", raiting=" + raiting +
+                ", date=" + date +
+                ", text='" + text + '\'' +
+                ", id=" + id +
                 '}';
     }
 }

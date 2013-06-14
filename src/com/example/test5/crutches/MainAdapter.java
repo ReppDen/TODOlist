@@ -32,7 +32,7 @@ public class MainAdapter<M extends TaskModel> extends ArrayAdapter<M> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         if (v == null) {
             LayoutInflater vi;
@@ -40,7 +40,6 @@ public class MainAdapter<M extends TaskModel> extends ArrayAdapter<M> {
             v = vi.inflate(R.layout.list_view, null);
         }
 
-        final View v2 = v;
         TextView text = (TextView) v.findViewById(R.id.list_view_taskText);
         TextView date = (TextView) v.findViewById(R.id.list_view_taskDate);
         RatingBar raiting = (RatingBar) v.findViewById(R.id.list_view_ratingBar);
@@ -49,14 +48,16 @@ public class MainAdapter<M extends TaskModel> extends ArrayAdapter<M> {
         isCompleted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                  showDone(v2);
+                TaskModel m = getItem(position);
+                m.setCompleted(!m.getCompleted());
             }
         });
 
         raiting.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                showDone(v2);
+                TaskModel m = getItem(position);
+                m.setRaiting(Math.round(v));
             }
         });
 
