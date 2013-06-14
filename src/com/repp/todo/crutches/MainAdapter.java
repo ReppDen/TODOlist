@@ -1,9 +1,7 @@
-package com.example.test5.crutches;
+package com.repp.todo.crutches;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import com.example.test5.R;
-import com.example.test5.models.TaskModel;
+import com.repp.todo.R;
+import com.repp.todo.models.TaskModel;
 
 import java.text.SimpleDateFormat;
 import java.util.List;

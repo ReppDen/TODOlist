@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TODO list</string>
+    <string name="app_name">TODO list Repp Edition</string>
     <string name="viewTask_TaskModel">viewTask_TaskModel</string>
     <string name="createTask_taskText">createTask_taskText</string>
 </resources>

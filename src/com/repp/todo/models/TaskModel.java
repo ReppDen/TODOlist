@@ -1,9 +1,7 @@
-package com.example.test5.models;
+package com.repp.todo.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 /**

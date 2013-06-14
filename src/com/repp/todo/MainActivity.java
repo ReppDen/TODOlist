@@ -1,19 +1,17 @@
-package com.example.test5;
+package com.repp.todo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
-import com.example.test5.crutches.MainAdapter;
-import com.example.test5.forms.map.MapActivity;
-import com.example.test5.models.TaskModel;
-import com.example.test5.forms.create_task.CreateTaskActivity;
-import com.example.test5.forms.view_task.ViewTaskActivity;
+import com.repp.todo.crutches.MainAdapter;
+import com.repp.todo.forms.map.MapActivity;
+import com.repp.todo.models.TaskModel;
+import com.repp.todo.forms.create_task.CreateTaskActivity;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -28,7 +26,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class MainActivity extends Activity {
 
@@ -102,7 +99,6 @@ public class MainActivity extends Activity {
                 XMLOutputter xmlOutput = new XMLOutputter();
                 xmlOutput.setFormat(Format.getPrettyFormat());
                 xmlOutput.output(document, new FileWriter(PATH));
-                Log.d(TAG, "File saved ");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -258,7 +254,6 @@ public class MainActivity extends Activity {
             XMLOutputter xmlOutput = new XMLOutputter();
             xmlOutput.setFormat(Format.getPrettyFormat());
             xmlOutput.output(document, new FileWriter(PATH));
-            Log.d(TAG, "File saved ");
         }  catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(MainActivity.this,"task is not saved!",5);

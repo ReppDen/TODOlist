@@ -1,8 +1,8 @@
-package com.example.test5.forms.map;
+package com.repp.todo.forms.map;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.example.test5.R;
+import com.repp.todo.R;
 
 /**
  * Здесь будет ваша реклама

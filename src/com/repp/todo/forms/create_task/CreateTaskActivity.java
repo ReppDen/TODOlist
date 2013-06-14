@@ -1,11 +1,11 @@
-package com.example.test5.forms.create_task;
+package com.repp.todo.forms.create_task;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import com.example.test5.R;
+import com.repp.todo.R;
 
 /**
  * Здесь будет ваша реклама

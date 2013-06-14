@@ -1,11 +1,10 @@
-package com.example.test5.forms.view_task;
+package com.repp.todo.forms.view_task;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
-import com.example.test5.R;
-import com.example.test5.models.TaskModel;
+import com.repp.todo.R;
+import com.repp.todo.models.TaskModel;
 
 /**
  * акитивити просмотра/редактирования задачи
