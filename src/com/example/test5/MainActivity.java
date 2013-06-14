@@ -175,11 +175,24 @@ public class MainActivity extends Activity {
         });
         taskList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, ViewTaskActivity.class);
-                intent.putExtra(getString(R.string.viewTask_TaskModel), adapter.getItem(position));
-                MainActivity.this.startActivity(intent);
+            public boolean onItemLongClick(final AdapterView<?> parent, View view,final int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Удалить задачу?")
+                        .setNegativeButton("Нет", null)
+                        .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                adapter.remove((TaskModel) parent.getAdapter().getItem(position));
+                            }
+                        });
+                // Create the AlertDialog object and return it
+                builder.create();
+                builder.show();
+
                 return true;
+//                Intent intent = new Intent(MainActivity.this, ViewTaskActivity.class);
+//                intent.putExtra(getString(R.string.viewTask_TaskModel), adapter.getItem(position));
+//                MainActivity.this.startActivity(intent);
+//                return true;
             }
         });
 
@@ -199,7 +212,6 @@ public class MainActivity extends Activity {
             TaskModel task = new TaskModel(text);
             adapter.insert(task, 0);
             taskText.setText("");
-            saveTasks();
         }
     }
 
@@ -227,6 +239,7 @@ public class MainActivity extends Activity {
      */
     private void saveTasks() {
         Element tasksEl  = document.getRootElement();
+        tasksEl.removeContent();
         for (TaskModel t : tasks) {
             Element el = new Element("task");
             el.addContent(new Element("text").setText(t.getText()));
@@ -248,6 +261,12 @@ public class MainActivity extends Activity {
             Toast.makeText(MainActivity.this,"task is not saved!",5);
         }
 
+    }
+
+    @Override
+    protected void onPause() {
+       saveTasks();
+        super.onPause();
     }
 
 }
