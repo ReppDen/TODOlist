@@ -25,10 +25,10 @@ import java.util.List;
  */
 public class MainAdapter<M extends TaskModel> extends ArrayAdapter<M> {
 
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
-    public MainAdapter(Context context, int textViewResourceId) {
-        super(context, textViewResourceId);
+    public MainAdapter(Context context, int textViewResourceId, List<M> objects) {
+        super(context, textViewResourceId, objects);
     }
 
     @Override

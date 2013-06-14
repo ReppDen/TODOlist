@@ -2,6 +2,7 @@ package com.example.test5.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * модель задачи, хранимая в списка задач
@@ -15,24 +16,36 @@ public class TaskModel implements Serializable {
     String text;
     Date date;
     Integer raiting;
-    Boolean completed;
+    Boolean completed = false;
+    String audio = "";
+    String photo = "";
 
-    public TaskModel(Long id, String text) {
-        this.id = id;
+    private static Random random = new Random();
+
+    public TaskModel() {
+        this.id = random.nextLong();
+        this.text = "";
+        this.date = new Date();
+        this.raiting = 0;
+        this.completed = false;
+    }
+
+    public TaskModel(String text) {
+        this.id = random.nextLong();
         this.text = text;
         this.date = new Date();
         this.raiting = 0;
         this.completed = false;
     }
 
-    public TaskModel(Long id, String text, Integer raiting) {
-        this.id = id;
+    public TaskModel(String text, Integer raiting) {
+        this.id =  random.nextLong();
         this.text = text;
         this.raiting = raiting;
     }
 
-    public TaskModel(Long id, String text, Date date, Integer raiting) {
-        this.id = id;
+    public TaskModel(String text, Date date, Integer raiting) {
+        this.id =  random.nextLong();
         this.text = text;
         this.date = date;
         this.raiting = raiting;
@@ -80,6 +93,22 @@ public class TaskModel implements Serializable {
         this.completed = completed;
     }
 
+    public String getAudio() {
+        return audio;
+    }
+
+    public void setAudio(String audio) {
+        this.audio = audio;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     @Override
     public String toString() {
         return "TaskModel{" +
@@ -88,8 +117,8 @@ public class TaskModel implements Serializable {
                 ", date=" + date +
                 ", raiting=" + raiting +
                 ", completed=" + completed +
+                ", audio='" + audio + '\'' +
+                ", photo='" + photo + '\'' +
                 '}';
     }
-
-
 }
