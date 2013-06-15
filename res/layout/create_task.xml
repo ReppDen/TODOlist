@@ -54,23 +54,27 @@
                             android:orientation="horizontal"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent">
-                        <ImageButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/create_task.play" android:src="@drawable/av_play_over_video"/>
-                        <SeekBar
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/create_task.progress" android:layout_weight="1.98" android:layout_gravity="center"/>
                     </LinearLayout>
                     <RelativeLayout android:orientation="horizontal" android:layout_width="match_parent"
                                     android:layout_height="wrap_content" android:id="@+id/relativeLayout1">
+                        <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/create_task.play" android:src="@drawable/av_play_over_video"
+                                android:layout_alignParentLeft="true" android:layout_centerVertical="true"/>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="файл не выбран"
+                                android:id="@+id/create_task.audio_name" android:layout_toRightOf="@+id/create_task.play"
+                                android:layout_centerVertical="true"/>
                         <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="Создать"
                                 android:id="@+id/create_task.create_audio" android:layout_gravity="left"
-                                android:layout_alignParentRight="true"/>
+                                android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
                         <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="Выбрать"
                                 android:id="@+id/create_task.select_audio" android:layout_gravity="center|right"
-                                android:layout_alignParentRight="false" android:layout_alignParentLeft="true"/>
+                                android:layout_toLeftOf="@+id/create_task.create_audio"
+                                android:layout_centerVertical="true"/>
                     </RelativeLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -80,49 +84,41 @@
                     <ImageView
                             android:layout_width="fill_parent"
                             android:layout_height="200dp"
-                            android:id="@+id/create_task.photo" android:src="@drawable/pic"
+                            android:id="@+id/create_task.photo" android:src="@drawable/no_image"
                             android:layout_weight="0.61"/>
                     <RelativeLayout android:orientation="horizontal" android:layout_width="match_parent"
                                   android:layout_height="wrap_content" android:id="@+id/linearLayout">
                         <Button android:layout_width="120dp" android:layout_height="wrap_content"
                                 android:text="Создать" android:id="@+id/create_task.create_photo" android:layout_gravity="left"
-                                android:layout_alignParentRight="true"/>
+                                android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
                         <Button android:layout_width="120dp" android:layout_height="wrap_content"
                                 android:text="Выбрать" android:id="@+id/create_task.select_photo" android:layout_gravity="center|right"
-                                android:layout_alignParentRight="false" android:layout_alignParentLeft="true"/>
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"/>
                     </RelativeLayout>
                 </LinearLayout>
                 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
                               android:layout_height="wrap_content">
                     <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent"
                                   android:layout_height="wrap_content" android:minHeight="40dp">
-                        <LinearLayout
-                                android:orientation="vertical"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                  android:text="Адрес" android:id="@+id/textView2"
+                                  android:layout_gravity="center|left" android:gravity="center|top"
+                                  android:layout_alignParentLeft="true" android:layout_centerVertical="true"
+                                  android:layout_marginRight="5px"/>
+                        <ImageButton
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:layout_alignParentLeft="true"
-                                android:layout_marginLeft="0dp"
-                                android:layout_marginTop="0dp" android:layout_centerVertical="true">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                      android:text="Адрес" android:id="@+id/textView2"
-                                      android:layout_gravity="center|left" android:gravity="center|top"/>
-                        </LinearLayout>
-                        <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:layout_alignParentLeft="false"
-                                android:layout_marginLeft="32dp" android:layout_alignParentTop="false"
-                                android:layout_marginTop="0dp" android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true">
-                            <EditText
-                                    android:layout_width="200dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="ул. Пушкина 1"
-                                    android:id="@+id/create_task.adress_text" android:layout_gravity="center"/>
-                            <ImageButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/create_task.address_select" android:src="@drawable/location_place"/>
-                        </LinearLayout>
+                                android:layout_height="wrap_content"
+                                android:id="@+id/create_task.address_select" android:src="@drawable/location_place"
+                                android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                        <EditText
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:text="ул. Пушкина 1"
+                                android:id="@+id/create_task.adress_text" android:layout_gravity="center"
+                                android:layout_centerVertical="true"
+                                android:layout_toLeftOf="@+id/create_task.address_select"
+                                android:layout_toRightOf="@+id/textView2"/>
                     </RelativeLayout>
                 </LinearLayout>
                 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"

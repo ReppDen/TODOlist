@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	>
+	
+	<LinearLayout android:id="@+id/ofd_top_bar"
+		 android:orientation="horizontal"
+		 android:layout_width="fill_parent"
+		 android:layout_height="wrap_content"
+		 android:weightSum="1.0"
+		 >
+
+	    <TextView android:id="@+id/ofd_current_path"
+		android:layout_width="1dip" 
+		android:layout_height="wrap_content"
+		android:layout_weight="0.78"
+		android:textColor="#FFFFFF"
+		android:textStyle="bold"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:paddingLeft="2dip"
+		/>
+	        
+	    <Button android:id="@+id/ofd_go_up"
+			android:layout_width="1dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.22"
+			android:layout_gravity="center_vertical"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:text="@string/ofd_go_up_text"
+			/>
+		 
+	</LinearLayout>
+		
+	<ListView android:id="@+id/ofd_list" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/ofd_top_bar"
+		/>
+			
+</RelativeLayout>
