@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends Activity {
@@ -33,7 +35,7 @@ public class MainActivity extends Activity {
     private static int CREATE_TASK = 1;
     private static int VIEW_TASK = 2;
     private final static String PATH = "/sdcard/tasks.xml";
-    ImageButton addBtn, mapBtn, quickAddButton, addGroupBtn, authBtn;
+    ImageButton addBtn, mapBtn, quickAddButton, addGroupBtn, authBtn, sortBtn;
     ListView taskList;
     EditText taskText;
     List<TaskModel> tasks = new ArrayList<TaskModel>();
@@ -67,6 +69,7 @@ public class MainActivity extends Activity {
         mapBtn = (ImageButton) findViewById(R.id.main_mapBtn);
         quickAddButton = (ImageButton) findViewById(R.id.main_quickAddButton);
         addGroupBtn = (ImageButton) findViewById(R.id.main_addGroupBtn);
+        sortBtn = (ImageButton) findViewById(R.id.main_sortButton);
         authBtn = (ImageButton) findViewById(R.id.main_authBtn);
 
         initXml();
@@ -138,6 +141,24 @@ public class MainActivity extends Activity {
             }
         });
 
+
+        sortBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 1. Instantiate an AlertDialog.Builder with its constructor
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                builder.setTitle("Выберите сортировку").setItems(new String[]{"Имя", "Дата", "Статус", "Рейтинг"}, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        sortTasks(which);
+                    }
+                });
+
+                builder.create().show();
+            }
+        });
+
         mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,6 +168,45 @@ public class MainActivity extends Activity {
         });
     }
 
+    private void sortTasks(int which) {
+        Comparator<TaskModel> c = null;
+        switch (which) {
+            case 0:
+                c = new Comparator<TaskModel>() {
+                    @Override
+                    public int compare(TaskModel lhs, TaskModel rhs) {
+                        return lhs.getText().compareTo(rhs.getText());
+                    }
+                };
+                break;
+            case 1:
+                c = new Comparator<TaskModel>() {
+                    @Override
+                    public int compare(TaskModel lhs, TaskModel rhs) {
+                        return lhs.getDate().compareTo(rhs.getDate());
+                    }
+                };
+                break;
+            case 2:
+                c = new Comparator<TaskModel>() {
+                    @Override
+                    public int compare(TaskModel lhs, TaskModel rhs) {
+                        return lhs.getCompleted().compareTo(rhs.getCompleted());
+                    }
+                };
+                break;
+            case 3:
+                c = new Comparator<TaskModel>() {
+                    @Override
+                    public int compare(TaskModel lhs, TaskModel rhs) {
+                        return lhs.getRaiting().compareTo(rhs.getRaiting());
+                    }
+                };
+                break;
+        }
+        Collections.sort(tasks, c);
+        adapter.notifyDataSetChanged();
+    }
 
 
     private void addItemToTaskList(String text) {
