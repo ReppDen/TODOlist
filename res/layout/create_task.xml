@@ -18,33 +18,33 @@
                               android:text="Создание задачи" android:id="@+id/create_task.title" android:textSize="25dp"
                               android:singleLine="true"/>
                     <EditText android:layout_width="fill_parent" android:layout_height="71dp"
-                              android:id="@+id/create_task.taskDescription" android:layout_gravity="left|center_vertical"
+                              android:id="@+id/create_task.taskText" android:layout_gravity="left|center_vertical"
                               android:inputType="text|textMultiLine" android:gravity="top"
                               android:text="Купить молоко. Собрать подписи. Вернуть книгу"/>
                     <RelativeLayout
                             android:orientation="horizontal"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent">
-                        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:text="Синхронизировать" android:id="@+id/checkBox" android:singleLine="false"
-                                  android:layout_gravity="center_vertical|left" android:layout_alignParentLeft="true"
-                                  android:layout_marginLeft="0dp" android:layout_alignParentTop="false"
-                                  android:layout_marginTop="3dp" android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                                  android:layout_height="fill_parent">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Дата"
+                                  android:id="@+id/textView9" android:textSize="20dp" android:layout_gravity="center"
+                                  android:layout_alignParentLeft="true"
+                                  android:layout_alignParentTop="false" android:layout_centerVertical="true"/>
+                        <EditText android:layout_width="200dp" android:layout_height="wrap_content"
+                                  android:text="06.05.2013" android:id="@+id/create_task.date"
+                                  android:layout_centerVertical="true"
+                                  android:layout_toLeftOf="@+id/create_task.rating"/>
                         <RatingBar
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/ratingBar" android:numStars="2" android:layout_alignParentLeft="false"
-                                android:layout_marginLeft="138dp" android:layout_alignParentTop="false"
-                                android:layout_marginTop="0dp" android:layout_centerVertical="true"
-                                android:layout_alignParentRight="true"/>
+                                android:id="@+id/create_task.rating" android:numStars="2" android:layout_alignParentLeft="false"
+                                android:layout_alignParentTop="false"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true" android:stepSize="1.0" android:rating="0"
+                                />
                     </RelativeLayout>
-                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
-                                  android:layout_height="fill_parent">
-                        <TextView android:layout_width="157dp" android:layout_height="wrap_content" android:text="Дата"
-                                  android:id="@+id/textView9" android:textSize="20dp" android:layout_gravity="center"/>
-                        <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
-                                  android:text="06.05.2013" android:id="@+id/main.taskText" android:layout_margin="3px"/>
-                    </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
                         android:orientation="vertical"
@@ -57,19 +57,19 @@
                         <ImageButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/imageButton" android:src="@drawable/av_play_over_video"/>
+                                android:id="@+id/create_task.play" android:src="@drawable/av_play_over_video"/>
                         <SeekBar
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/seekBar" android:layout_weight="1.98" android:layout_gravity="center"/>
+                                android:id="@+id/create_task.progress" android:layout_weight="1.98" android:layout_gravity="center"/>
                     </LinearLayout>
                     <RelativeLayout android:orientation="horizontal" android:layout_width="match_parent"
                                     android:layout_height="wrap_content" android:id="@+id/relativeLayout1">
                         <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="Создать"
-                                android:id="@+id/button" android:layout_gravity="left"
+                                android:id="@+id/create_task.create_audio" android:layout_gravity="left"
                                 android:layout_alignParentRight="true"/>
                         <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="Выбрать"
-                                android:id="@+id/button1" android:layout_gravity="center|right"
+                                android:id="@+id/create_task.select_audio" android:layout_gravity="center|right"
                                 android:layout_alignParentRight="false" android:layout_alignParentLeft="true"/>
                     </RelativeLayout>
                 </LinearLayout>
@@ -79,16 +79,16 @@
                         android:layout_height="fill_parent">
                     <ImageView
                             android:layout_width="fill_parent"
-                            android:layout_height="199dp"
-                            android:id="@+id/imageView1" android:src="@drawable/pic"
+                            android:layout_height="200dp"
+                            android:id="@+id/create_task.photo" android:src="@drawable/pic"
                             android:layout_weight="0.61"/>
                     <RelativeLayout android:orientation="horizontal" android:layout_width="match_parent"
                                   android:layout_height="wrap_content" android:id="@+id/linearLayout">
                         <Button android:layout_width="120dp" android:layout_height="wrap_content"
-                                android:text="Создать" android:id="@+id/button5" android:layout_gravity="left"
+                                android:text="Создать" android:id="@+id/create_task.create_photo" android:layout_gravity="left"
                                 android:layout_alignParentRight="true"/>
                         <Button android:layout_width="120dp" android:layout_height="wrap_content"
-                                android:text="Выбрать" android:id="@+id/button6" android:layout_gravity="center|right"
+                                android:text="Выбрать" android:id="@+id/create_task.select_photo" android:layout_gravity="center|right"
                                 android:layout_alignParentRight="false" android:layout_alignParentLeft="true"/>
                     </RelativeLayout>
                 </LinearLayout>
@@ -117,11 +117,11 @@
                                     android:layout_width="200dp"
                                     android:layout_height="wrap_content"
                                     android:text="ул. Пушкина 1"
-                                    android:id="@+id/editText" android:layout_gravity="center"/>
+                                    android:id="@+id/create_task.adress_text" android:layout_gravity="center"/>
                             <ImageButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/imageButton1" android:src="@drawable/location_place"/>
+                                    android:id="@+id/create_task.address_select" android:src="@drawable/location_place"/>
                         </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>

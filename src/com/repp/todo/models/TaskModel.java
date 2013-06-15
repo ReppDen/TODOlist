@@ -53,6 +53,10 @@ public class TaskModel implements Serializable {
         this.completed = false;
     }
 
+    public boolean isNew() {
+        return "".equals(text);
+    }
+
     public Long getId() {
         return id;
 

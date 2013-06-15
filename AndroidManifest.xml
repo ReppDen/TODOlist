@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher"
-                 android:debuggable="false"
                  android:versionCode="1"
                  android:versionName="1.0">
         <activity android:name="MainActivity"
@@ -20,9 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".forms.view_task.ViewTaskActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".forms.create_task.CreateTaskActivity"
+        <activity android:name=".forms.create_task.CreateViewTaskActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".forms.map.MapActivity"
                   android:screenOrientation="portrait"/>

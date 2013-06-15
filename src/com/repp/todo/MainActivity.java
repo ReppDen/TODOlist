@@ -9,9 +9,9 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
 import com.repp.todo.crutches.MainAdapter;
+import com.repp.todo.forms.create_task.CreateViewTaskActivity;
 import com.repp.todo.forms.map.MapActivity;
 import com.repp.todo.models.TaskModel;
-import com.repp.todo.forms.create_task.CreateTaskActivity;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -30,6 +30,8 @@ import java.util.List;
 public class MainActivity extends Activity {
 
     private static final String TAG = MainActivity.class.getName();
+    private static int CREATE_TASK = 1;
+    private static int VIEW_TASK = 2;
     private final static String PATH = "/sdcard/tasks.xml";
     ImageButton addBtn, mapBtn, quickAddButton, addGroupBtn, authBtn;
     ListView taskList;
@@ -78,61 +80,6 @@ public class MainActivity extends Activity {
 
     }
 
-    /**
-     * создает xmlку с тасками если ее еще нет
-     */
-    private void initXml()  {
-        SAXBuilder builder = new SAXBuilder();
-        File xmlFile = new File(PATH);
-        if (!xmlFile.exists()) {
-            if (!xmlFile.exists()) {
-                try {
-                    xmlFile.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            try {
-                Element tasks = new Element("tasks");
-                document = new Document(tasks);
-
-                XMLOutputter xmlOutput = new XMLOutputter();
-                xmlOutput.setFormat(Format.getPrettyFormat());
-                xmlOutput.output(document, new FileWriter(PATH));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                document = builder.build(xmlFile);
-                Element rootNode = document.getRootElement();
-                List<Element> list = rootNode.getChildren("task");
-
-                for (Element node : list) {
-                    TaskModel m = new TaskModel();
-                    m.setText(node.getChildText("text"));
-                    m.setCompleted(Boolean.valueOf(node.getChildText("completed")));
-                    m.setRaiting(Integer.valueOf(node.getChildText("raiting")));
-                    m.setPhoto(node.getChildText("photo"));
-                    m.setAudio(node.getChildText("audio"));
-                    m.setAdress(node.getChildText("address"));
-                    try {
-                        m.setDate(sdf.parse(node.getChildText("date")));
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    tasks.add(m);
-                }
-
-            } catch (IOException io) {
-                System.out.println(io.getMessage());
-            } catch (JDOMException jdomex) {
-                System.out.println(jdomex.getMessage());
-            }
-
-        }
-    }
-
     private void initListeners() {
         authBtn.setOnClickListener(nextTimeBabyListener);
         addGroupBtn.setOnClickListener(nextTimeBabyListener);
@@ -147,9 +94,9 @@ public class MainActivity extends Activity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CreateTaskActivity.class);
-                intent.putExtra(getString(R.string.createTask_taskText), taskText.getText().toString());
-                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, CreateViewTaskActivity.class);
+                intent.putExtra(getString(R.string.createTask_taskText), new TaskModel());
+                startActivityForResult(intent, CREATE_TASK);
             }
         });
         taskText.setOnKeyListener(new View.OnKeyListener() {
@@ -166,8 +113,10 @@ public class MainActivity extends Activity {
 
         taskList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                reliseOmNomNom();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, CreateViewTaskActivity.class);
+                intent.putExtra(getString(R.string.createTask_taskText), adapter.getItem(position));
+                MainActivity.this.startActivityForResult(intent, VIEW_TASK);
             }
         });
         taskList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -186,10 +135,6 @@ public class MainActivity extends Activity {
                 builder.show();
 
                 return true;
-//                Intent intent = new Intent(MainActivity.this, ViewTaskActivity.class);
-//                intent.putExtra(getString(R.string.viewTask_TaskModel), adapter.getItem(position));
-//                MainActivity.this.startActivity(intent);
-//                return true;
             }
         });
 
@@ -232,6 +177,63 @@ public class MainActivity extends Activity {
     }
 
     /**
+     * создает xmlку с тасками если ее еще нет
+     */
+    private void initXml()  {
+        SAXBuilder builder = new SAXBuilder();
+        File xmlFile = new File(PATH);
+        if (!xmlFile.exists()) {
+            if (!xmlFile.exists()) {
+                try {
+                    xmlFile.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            try {
+                Element tasks = new Element("tasks");
+                document = new Document(tasks);
+
+                XMLOutputter xmlOutput = new XMLOutputter();
+                xmlOutput.setFormat(Format.getPrettyFormat());
+                xmlOutput.output(document, new FileWriter(PATH));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                document = builder.build(xmlFile);
+                Element rootNode = document.getRootElement();
+                List<Element> list = rootNode.getChildren("task");
+
+                for (Element node : list) {
+                    TaskModel m = new TaskModel();
+                    m.setId(Long.valueOf(node.getChildText("id")));
+                    m.setText(node.getChildText("text"));
+                    m.setCompleted(Boolean.valueOf(node.getChildText("completed")));
+                    m.setRaiting(Integer.valueOf(node.getChildText("raiting")));
+                    m.setPhoto(node.getChildText("photo"));
+                    m.setAudio(node.getChildText("audio"));
+                    m.setAdress(node.getChildText("address"));
+                    try {
+                        m.setDate(sdf.parse(node.getChildText("date")));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    tasks.add(m);
+                }
+
+            } catch (IOException io) {
+                System.out.println(io.getMessage());
+            } catch (JDOMException jdomex) {
+                System.out.println(jdomex.getMessage());
+            }
+
+        }
+    }
+
+
+    /**
      * сохраняет все задачи
      */
     private void saveTasks() {
@@ -239,6 +241,7 @@ public class MainActivity extends Activity {
         tasksEl.removeContent();
         for (TaskModel t : tasks) {
             Element el = new Element("task");
+            el.addContent(new Element("id").setText(String.valueOf(t.getId())));
             el.addContent(new Element("text").setText(t.getText()));
             el.addContent(new Element("date").setText(sdf.format(t.getDate())));
             el.addContent(new Element("raiting").setText(String.valueOf(t.getRaiting())));
@@ -259,6 +262,31 @@ public class MainActivity extends Activity {
             Toast.makeText(MainActivity.this,"task is not saved!",5);
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == VIEW_TASK) {
+            if (resultCode == RESULT_OK) {
+                TaskModel task = (TaskModel) data.getExtras().get(getString(R.string.createTask_taskText));
+                for (int i = 0, tasksSize = tasks.size(); i < tasksSize; i++) {
+                    TaskModel t = tasks.get(i);
+                    if (t.getId().equals(task.getId())) {
+                        System.out.println("qweqwew");
+                        tasks.set(i,task);
+                        break;
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+        }
+        if (requestCode == CREATE_TASK) {
+            if (resultCode == RESULT_OK) {
+                TaskModel task = (TaskModel) data.getExtras().get(getString(R.string.createTask_taskText));
+                tasks.add(task);
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override
