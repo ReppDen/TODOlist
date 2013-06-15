@@ -68,6 +68,12 @@
                                 android:text="файл не выбран"
                                 android:id="@+id/create_task.audio_name" android:layout_toRightOf="@+id/create_task.play"
                                 android:layout_centerVertical="true"/>
+                        <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Удалить"
+                                android:id="@+id/create_task_audio_remove" android:layout_toLeftOf="@+id/create_task.select_audio"
+                                android:layout_centerVertical="true"/>
                         <Button android:layout_width="120dp" android:layout_height="wrap_content" android:text="Создать"
                                 android:id="@+id/create_task.create_audio" android:layout_gravity="left"
                                 android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
@@ -81,20 +87,32 @@
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
-                    <ImageView
+                    <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="fill_parent"
-                            android:layout_height="200dp"
-                            android:id="@+id/create_task.photo" android:src="@drawable/no_image"
-                            android:layout_weight="0.61"/>
+                            android:layout_height="fill_parent">
+                        <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="200dp"
+                                android:id="@+id/create_task.photo" android:src="@drawable/no_image"
+                                android:layout_weight="0.61"/>
+                    </LinearLayout>
                     <RelativeLayout android:orientation="horizontal" android:layout_width="match_parent"
                                   android:layout_height="wrap_content" android:id="@+id/linearLayout">
                         <Button android:layout_width="120dp" android:layout_height="wrap_content"
                                 android:text="Создать" android:id="@+id/create_task.create_photo" android:layout_gravity="left"
-                                android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true"/>
                         <Button android:layout_width="120dp" android:layout_height="wrap_content"
                                 android:text="Выбрать" android:id="@+id/create_task.select_photo" android:layout_gravity="center|right"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"/>
+                                android:layout_centerVertical="true" android:layout_alignParentRight="false"
+                                android:layout_toLeftOf="@+id/create_task.create_photo"/>
+                        <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Удалить"
+                                android:id="@+id/create_task_photo_remove"
+                                android:layout_toLeftOf="@+id/create_task.select_photo"/>
                     </RelativeLayout>
                 </LinearLayout>
                 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
@@ -130,8 +148,13 @@
                             android:layout_margin="3px"/>
                     <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
                             android:text="Отмена" android:id="@+id/create_task.close" android:layout_gravity="center|left"
-                            android:layout_alignParentRight="false" android:layout_alignParentLeft="true"
+                            android:layout_alignParentLeft="true"
                             android:layout_margin="3px"/>
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Выполнить"
+                            android:id="@+id/create_task.doit" android:layout_centerInParent="true"/>
                 </RelativeLayout>
             </LinearLayout>
         </ScrollView>

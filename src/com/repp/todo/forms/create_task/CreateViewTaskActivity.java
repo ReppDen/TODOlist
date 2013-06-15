@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,8 +18,7 @@ import com.repp.todo.crutches.OpenFileDialog;
 import com.repp.todo.models.TaskModel;
 import com.google.common.io.Files;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Random;
@@ -51,8 +51,11 @@ public class CreateViewTaskActivity extends Activity {
     TextView date;
     Button save;
     Button close;
-
+    Button audioRemove,photoRemove;
+    ImageView image;
+    Button doit;
     TaskModel task;
+    private Uri mImageCaptureUri;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
@@ -70,12 +73,17 @@ public class CreateViewTaskActivity extends Activity {
         play = (ImageButton) findViewById(R.id.create_task_play);
         audioSelect = (Button) findViewById(R.id.create_task_select_audio);
         audioCreate = (Button) findViewById(R.id.create_task_create_audio);
-        photoSelect = (Button) findViewById(R.id.create_task_select_photo);
-        photoCreate = (Button) findViewById(R.id.create_task_create_photo);
+        audioRemove = (Button) findViewById(R.id.create_task_audio_remove);
         addressSelect = (ImageButton) findViewById(R.id.create_task_address_select);
         addressText = (EditText) findViewById(R.id.create_task_adress_text);
         save = (Button) findViewById(R.id.create_task_save);
         close = (Button) findViewById(R.id.create_task_close);
+
+        photoRemove = (Button) findViewById(R.id.create_task_photo_remove);
+        photoSelect = (Button) findViewById(R.id.create_task_select_photo);
+        photoCreate = (Button) findViewById(R.id.create_task_create_photo);
+        image = (ImageView) findViewById(R.id.create_task_photo);
+        doit = (Button) findViewById(R.id.create_task_doit);
 
         initDeafultState(task);
 
@@ -92,13 +100,19 @@ public class CreateViewTaskActivity extends Activity {
         raitingBar.setRating((float) t.getRaiting());
         date.setText(sdf.format(t.getDate()));
 
-        if (!t.getPhoto().isEmpty()) {
-            // TODO
+        if (t.getPhoto().isEmpty()) {
+            image.setImageResource(R.drawable.no_image);
+        } else {
+            Drawable d = Drawable.createFromPath(task.getPhoto());
+            image.setImageDrawable(d);
         }
 
         if (t.getAudio().isEmpty()) {
             audioName.setText("Файл не выбран");
             play.setEnabled(false);
+        } else {
+            audioName.setText(task.getAudio());
+            play.setEnabled(true);
         }
 
         if (!t.getAdress().isEmpty()) {
@@ -109,6 +123,32 @@ public class CreateViewTaskActivity extends Activity {
     }
 
     private void initListeners() {
+
+        doit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                task.setCompleted(true);
+                save();
+            }
+        });
+        audioRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!task.getAudio().isEmpty()) {
+                    audioName.setText("Файл не выбран");
+                    play.setEnabled(false);
+                }
+            }
+        });
+
+        photoRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!task.getPhoto().isEmpty()) {
+                    image.setImageResource(R.drawable.no_image);
+                }
+            }
+        });
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,7 +191,7 @@ public class CreateViewTaskActivity extends Activity {
                 OpenFileDialog ofd = new OpenFileDialog(CreateViewTaskActivity.this, null, new String[]{".jpg", ".png"},
                         new OpenFileDialog.OnFileSelectedListener() {
                             public void onFileSelected(File f) {
-                                ImageView image = (ImageView) findViewById(R.id.create_task_photo);
+                                task.setPhoto(f.getPath());
                                 Uri u = Uri.fromFile(f);
                                 image.setImageURI(u);
                             }
@@ -174,8 +214,7 @@ public class CreateViewTaskActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                cameraIntent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT,
-                        Uri.fromFile(new File("/todo/" + r.nextInt())));
+                cameraIntent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
                 startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
 
             }
@@ -190,19 +229,23 @@ public class CreateViewTaskActivity extends Activity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                task.setText(taskText.getText().toString());
-                try {
-                    task.setDate(sdf.parse(date.getText().toString()));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                task.setRaiting(Math.round(raitingBar.getRating()));
-                Intent intent = new Intent();
-                intent.putExtra(getString(R.string.createTask_taskText), task);
-                setResult(RESULT_OK, intent);
-                CreateViewTaskActivity.this.finish();
+                save();
             }
         });
+    }
+
+    private void save() {
+        task.setText(taskText.getText().toString());
+        try {
+            task.setDate(sdf.parse(date.getText().toString()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        task.setRaiting(Math.round(raitingBar.getRating()));
+        Intent intent = new Intent();
+        intent.putExtra(getString(R.string.createTask_taskText), task);
+        setResult(RESULT_OK, intent);
+        CreateViewTaskActivity.this.finish();
     }
 
     @Override
@@ -223,8 +266,23 @@ public class CreateViewTaskActivity extends Activity {
         //камера
         if (requestCode == CAMERA_PIC_REQUEST && resultCode == RESULT_OK) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            ImageView image = (ImageView) findViewById(R.id.create_task_photo);
             image.setImageBitmap(thumbnail);
+            String path = Environment.getExternalStorageDirectory().toString();
+            path += "/todo/";
+            String name = "photo"+r.nextInt()+".jpg";
+            File file = new File(path,name);
+
+            try {
+                OutputStream fOut = new FileOutputStream(file);
+                thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, fOut);
+                fOut.flush();
+                fOut.close();
+                task.setPhoto(path+name);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
